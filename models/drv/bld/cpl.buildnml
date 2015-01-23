@@ -1,0 +1,102 @@
+#! /usr/bin/env perl
+use strict;
+
+if ($#ARGV == -1) {
+    die " ERROR cpl.buildexe: must specify a caseroot input argument";
+}
+my ($CASEROOT) = @ARGV;
+chdir "${CASEROOT}";
+
+my @dirs = ("$CASEROOT/Tools");
+unshift @INC, @dirs;
+require SetupTools;
+my $sysmod; 
+
+my $ATM_GRID		= `./xmlquery  ATM_GRID		-value`;
+my $CASEBUILD		= `./xmlquery  CASEBUILD	-value`;
+my $CASEROOT		= `./xmlquery  CASEROOT		-value`;
+my $CAM_CONFIG_OPTS	= `./xmlquery  CAM_CONFIG_OPTS	-value`;
+my $CCSMROOT		= `./xmlquery  CCSMROOT		-value`;
+my $GRID		= `./xmlquery  GRID		-value`;
+my $LND_GRID		= `./xmlquery  LND_GRID		-value`;
+my $OCN_GRID		= `./xmlquery  OCN_GRID		-value`;
+my $ROF_GRID		= `./xmlquery  ROF_GRID		-value`;
+my $RUNDIR		= `./xmlquery  RUNDIR		-value`;
+my $WAV_GRID		= `./xmlquery  WAV_GRID		-value`;
+
+if (! -d "$CASEBUILD/cplconf" ) {
+    $sysmod = "mkdir $CASEBUILD/cplconf";
+    system($sysmod) == 0 or die "ERROR cpl.buildnml: $sysmod failed: $?\n";
+}
+chdir "$CASEBUILD/cplconf";
+
+# -----------------------------------------------------
+# create cplconf/cesm_namelist
+# -----------------------------------------------------
+
+open(file_cesm_namelist,">$CASEBUILD/cplconf/cesm_namelist") or die "Could not open file $CASEBUILD/cplconf/cesm_namelist to write";
+print file_cesm_namelist "\&drv_inparm \n";
+
+# parse the target user_nl_cpl file and add the relevant contents to cplconf/cesm_namelist
+open( file_usernl,"<$CASEROOT/user_nl_cpl") or die "** can't open file: $CASEROOT/user_nl_cpl\n";
+while (my $line = <file_usernl>) {
+    if ($line =~ /^[\&\/\!]/ ) {
+	next; # do nothing
+    } elsif ($line =~ /\$([\w\_]+)/) {
+	my $var = $1;
+	my $xmlhash;
+	SetupTools::getxmlvars($CASEROOT, $xmlhash);
+	$line = SetupTools::expand_env_var($line,$xmlhash);
+    }
+    print file_cesm_namelist "$line";
+}
+close(file_usernl);
+
+if ($CAM_CONFIG_OPTS) {
+    if ( "$CAM_CONFIG_OPTS" =~ /.*adiabatic.*/ ) {
+	print file_cesm_namelist "atm_adiabatic = .true.";
+    }
+    if ( "$CAM_CONFIG_OPTS" =~ /.*ideal.*/ ) {
+	print file_cesm_namelist "atm_ideal_phys = .true.";
+    }
+    if ( "$CAM_CONFIG_OPTS" =~ /.*aquaplanet.*/ ) {
+	print file_cesm_namelist "aqua_planet     = .true.";
+	print file_cesm_namelist "aqua_planet_sst = 1";
+    }
+}
+
+print file_cesm_namelist "\/ \n";
+close(file_cesm_namelist);
+
+# -----------------------------------------------------
+# call build-namelist
+# -----------------------------------------------------
+
+$sysmod = "$CCSMROOT/models/drv/bld/build-namelist";
+$sysmod = "$sysmod -infile $CASEBUILD/cplconf/cesm_namelist";
+$sysmod = "$sysmod -caseroot $CASEROOT";
+$sysmod = "$sysmod -scriptsroot $CCSMROOT/scripts";
+$sysmod = "$sysmod -grid $GRID -rof_grid $ROF_GRID -atm_grid $ATM_GRID ";
+$sysmod = "$sysmod -lnd_grid $LND_GRID -ocn_grid $OCN_GRID -wav_grid $WAV_GRID";
+system($sysmod) == 0 or die "ERROR cpl.buildnml: $sysmod failed: $?\n";
+
+# -----------------------------------------------------
+# move drv_in, seq_maps.rc and all *modio* files to $RUNDIR
+# -----------------------------------------------------
+
+if (-d ${RUNDIR}) {
+    $sysmod = "cp $CASEBUILD/cplconf/drv_in       ${RUNDIR}/.";
+    system($sysmod) == 0 or die "ERROR cpl.buildnml: $sysmod failed: $?\n";
+
+    $sysmod = "cp $CASEBUILD/cplconf/seq_maps.rc  ${RUNDIR}/.";
+    system($sysmod) == 0 or die "ERROR cpl.buildnml: $sysmod failed: $?\n";
+
+    $sysmod = "cp $CASEBUILD/cplconf/*modelio*    ${RUNDIR}/.";
+    system($sysmod) == 0 or die "ERROR cpl.buildnml: $sysmod failed: $?\n";
+}
+
+exit (0);
+
+
+
+

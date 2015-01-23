@@ -1,0 +1,20 @@
+#! /usr/bin/env perl
+use strict;
+
+chdir "obj";
+
+my $CASEROOT  = `./xmlquery CASEROOT  -value`;
+my $CASETOOLS = `./xmlquery CASETOOLS -value`;
+my $CODEROOT  = `./xmlquery CODEROOT  -value`;
+my $MACH      = `./xmlquery MACH      -value`;
+my $OBJROOT   = `./xmlquery OBJROOT   -value`;
+my $LIBROOT   = `./xmlquery LIBROOT   -value`;
+my $GMAKE_J   = `./xmlquery GMAKE_J   -value`;
+
+open(file,">Filepath") or die "Could not open file Filepath to write";
+print file "${CASEROOT}/SourceMods/src.aquap\n";
+print file "${CODEROOT}/atm/cam/src/utils/cam_aqua\n";
+print file "${CODEROOT}/atm/cam/src/utils/cam_aqua/cpl\n";
+close(file);
+
+system("gmake complib -j ${GMAKE_J} MODEL=aquap COMPLIB=${LIBROOT}/libocn.a -f ${CASETOOLS}/Makefile USER_INCLDIR=-I${EXEROOT}/atm/obj");
