@@ -1,0 +1,27 @@
+/******************************************************************************
+ *
+ *
+ *
+ * Copyright (C) 2009
+ *
+ * Permission to use, copy, modify, and distribute this software and its
+ * documentation under the terms of the GNU General Public License is hereby
+ * granted. No representations are made about the suitability of this software
+ * for any purpose. It is provided "as is" without express or implied warranty.
+ * See the GNU General Public License for more details.
+ *
+ * Documents produced by Doxygen are derivative works derived from the
+ * input used in their production; they are not affected by this license.
+ *
+ */
+
+/*! \page perl Perl markup conventions
+
+Perl code documentation uses the Doxygen::Filter::Perl module input filter which is
+specified in the Doxyfile configuration file. There are a number of sites
+available that demonstrate good documentation markup for Perl code using the /usr/local/bin/doxygen-filter-perl
+input filter. They include:
+
+ - http://search.cpan.org/dist/Doxygen-Filter-Perl/lib/Doxygen/Filter/Perl.pm
+ - https://www.ifa.hawaii.edu/users/jedicke/MOPS/docs/UsingDoxygenWithPerlForPS1-MOPS.pdf
+*/

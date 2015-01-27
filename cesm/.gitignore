@@ -1,0 +1,12 @@
+*.nc
+*.bin
+models/atm/cam/
+models/glc/cism/
+models/ice/cice/
+models/lnd/clm/
+models/ocn/pop2/
+models/rof/rtm/
+models/utils/mct/
+models/utils/pio/
+models/wav/ww3/
+

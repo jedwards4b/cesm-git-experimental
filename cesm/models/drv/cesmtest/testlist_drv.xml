@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<testlist>
+  <compset name="A">
+    <grid name="f19_g16_rx1">
+      <test name="ERS_D_Ld3">
+        <machine compiler="intel" testtype="aux_drv">yellowstone</machine>
+      </test>
+    </grid>
+    <grid name="f45_g37_rx1">
+      <test name="CME_Ld3">
+        <machine compiler="intel" testtype="aux_drv">yellowstone</machine>
+      </test>
+      <test name="ERI_Ld9">
+        <machine compiler="intel" testtype="aux_drv">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+  <compset name="B1850CN">
+    <grid name="T31_g37">
+      <test name="CME">
+        <machine compiler="intel" testtype="aux_drv">yellowstone</machine>
+      </test>
+      <test name="SMS_D">
+        <machine compiler="intel" testtype="aux_drv">yellowstone</machine>
+      </test>
+    </grid>
+    <grid name="f09_g16">
+      <test name="ERS_Lm3">
+        <machine compiler="intel" testtype="aux_drv">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+  <compset name="B55TRWCN">
+    <grid name="f19_g16">
+      <test name="ERI_Ld5">
+        <machine compiler="intel" testtype="aux_drv" testmods="allactive/default">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+  <compset name="BCN">
+    <grid name="T31_g37">
+      <test name="ERS_PT_Ld5">
+        <machine compiler="intel" testtype="aux_drv" testmods="allactive/default">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+  <compset name="BHISTBPRP">
+    <grid name="f09_g16">
+      <test name="ERS_Ld5">
+        <machine compiler="intel" testtype="aux_drv" testmods="allactive/default">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+  <compset name="BRCP45CN">
+    <grid name="f09_g16">
+      <test name="ERI_Ld5">
+        <machine compiler="intel" testtype="aux_drv" testmods="allactive/default">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+  <compset name="CECO">
+    <grid name="T62_g16">
+      <test name="SMS">
+        <machine compiler="intel" testtype="aux_drv" testmods="pop/default">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+  <compset name="ETEST">
+    <grid name="f19_g16">
+      <test name="ERI_Ld9">
+        <machine compiler="intel" testtype="aux_drv" testmods="cice/default">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+
+  <compset name="F">
+    <grid name="f19_f19">
+      <test name="ERP_D_Ln48">
+        <machine compiler="intel" testtype="aux_drv" testmods="cam/default">yellowstone</machine>
+      </test>
+      <test name="ERP_PT_Ln48">
+        <machine compiler="intel" testtype="aux_drv" testmods="cam/default">yellowstone</machine>
+      </test>
+    </grid>
+    <grid name="ne30_f19_g16">
+      <test name="SMS_Ld1">
+        <machine compiler="intel" testtype="aux_drv" testmods="cam/default">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+  <compset name="FAMIPCN">
+    <grid name="f19_f19">
+      <test name="ERP_Ln48">
+        <machine compiler="intel" testtype="aux_drv" testmods="cam/default">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+
+  <compset name="GIAF">
+    <grid name="T62_g16">
+      <test name="SMS_D">
+        <machine compiler="intel" testtype="aux_drv" testmods="popcice/default">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>    
+  <compset name="IG">
+    <grid name="f19_g16">
+      <test name="ERI">
+        <machine compiler="intel" testtype="aux_drv">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>
+  <compset name="S">
+    <grid name="f19_g16">
+      <test name="CME_Ld3">
+        <machine compiler="intel" testtype="aux_drv">yellowstone</machine>
+      </test>
+    </grid>
+    <grid name="f19_g16">
+      <test name="ERS_D">
+        <machine compiler="intel" testtype="aux_drv">yellowstone</machine>
+      </test>
+    </grid>
+  </compset>    
+
+</testlist>

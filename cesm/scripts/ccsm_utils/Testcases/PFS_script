@@ -1,0 +1,50 @@
+
+#======================================================================
+# Setup
+#======================================================================
+
+cd $CASEROOT
+
+./xmlchange -file env_run.xml -id CONTINUE_RUN -val FALSE
+./xmlchange -file env_run.xml -id REST_OPTION  -val none
+
+#======================================================================
+# do a run and just look at performance
+#======================================================================
+
+cd $CASEROOT
+echo "doing a ${STOP_N} ${STOP_OPTION} test with no restart files" >>& $TESTSTATUS_LOG 
+
+./$CASE.run
+if ($status != 0) exit -1
+
+if (-e $CplLogFile) then
+   set pass = `grep "SUCCESSFUL TERMINATION" $CplLogFile | wc -l`
+   if ($pass != 1) then
+       echo "ERROR: coupler log $CplLogFile indicates model run failed" >>& $TESTSTATUS_LOG
+       echo "" >>& $TESTSTATUS_LOG
+       exit -1;
+    else 
+       echo "Success: test log is $CplLogFile" >>& $TESTSTATUS_LOG 
+       echo "" >>& $TESTSTATUS_LOG 
+    endif
+else
+   echo "ERROR: no coupler log created, model run failed" >>& $TESTSTATUS_LOG
+   exit -1;
+endif
+
+#======================================================================
+# Check test success
+#======================================================================
+
+setenv CPLLOG $CplLogFile
+
+echo "DONE ${CASEBASEID} : (test finished, successful coupler log) " >>& $TESTSTATUS_LOG
+echo "" >>& $TESTSTATUS_LOG
+
+echo "DONE ${CASEBASEID} : (test finished, successful coupler log) " >&! $TESTSTATUS_OUT
+echo "--- Test Functionality: ---" >>& $TESTSTATUS_OUT
+echo "this test just measures performance - so there are no PASS/FAIL metrics
+
+
+
