@@ -16,6 +16,7 @@ cd $CASEROOT
 echo "doing a ${STOP_N} ${STOP_OPTION} test with no restart files" >>& $TESTSTATUS_LOG 
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 if (-e $CplLogFile) then
    set pass = `grep "SUCCESSFUL TERMINATION" $CplLogFile | wc -l`

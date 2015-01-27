@@ -46,6 +46,7 @@ echo "" >>& $TESTSTATUS_LOG
 echo "doing an ${STOP_N} ${STOP_OPTION} initial test, no restarts written" >>& $TESTSTATUS_LOG 
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
@@ -93,6 +94,7 @@ cp -f env_build.xml.2    env_build.xml
 cp -f env_build.xml.2    LockedFiles/env_build.xml.locked
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then

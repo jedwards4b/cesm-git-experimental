@@ -1,5 +1,5 @@
 !===============================================================================
-! SVN $Id: seq_timemgr_mod.F90 65841 2014-11-30 14:44:29Z jedwards $
+! SVN $Id: seq_timemgr_mod.F90 67467 2015-01-26 01:04:19Z mvertens $
 ! SVN $URL: https://svn-ccsm-models.cgd.ucar.edu/drv/seq_mct/branches/newtesting/shr/seq_timemgr_mod.F90 $
 !===============================================================================
 !BOP ===========================================================================
@@ -986,7 +986,7 @@ subroutine seq_timemgr_EClockGetData( EClock, curr_yr, curr_mon, curr_day,    &
        timediff = CurrentTime - RefTime
        call ESMF_TimeIntervalGet(timediff, d=days, s=seconds, rc=rc)
        call seq_timemgr_ESMFCodeCheck( rc, msg=subname//"Error from  TimeIntervalGet timediff")
-       curr_time = days + seconds/real(SecPerDay)
+       curr_time = days + seconds/real(SecPerDay,SHR_KIND_R8)
     end if
 
     ! ---Previous Time (the time interval between the previous date and the reference date) ---
@@ -994,7 +994,7 @@ subroutine seq_timemgr_EClockGetData( EClock, curr_yr, curr_mon, curr_day,    &
        timediff = PreviousTime - RefTime
        call ESMF_TimeIntervalGet(timediff, d=days, s=seconds, rc=rc)
        call seq_timemgr_ESMFCodeCheck( rc, msg=subname//"Error from  TimeIntervalGet timediff")
-       prev_time = days + seconds/real(SecPerDay)
+       prev_time = days + seconds/real(SecPerDay,SHR_KIND_R8)
     end if
 
     ! --- Previous time --------------------------------------------------------

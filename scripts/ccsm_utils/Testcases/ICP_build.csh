@@ -151,6 +151,11 @@ foreach bx ($bxvals)
 
       if ($precheck == 0) then
         ./*.build
+        if ($status != 0) then
+          echo "Error: build NTASKS_ICE $NTASKS_ICE and NTHRDS_ICE $NTHRDS_ICE  failed" >! ./TestStatus
+          echo "CFAIL $CASE" > ./TestStatus
+          exit -1    
+        endif 
 
         @ cnt = $cnt + 1
         set acnt = $cnt

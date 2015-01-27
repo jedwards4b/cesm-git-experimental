@@ -22,7 +22,7 @@ print file "${CASEROOT}/SourceMods/src.drv\n";
 print file "${CCSMROOT}/models/drv/driver\n";
 close(file);
 
-my $sysmod = "gmake exec_se -j ${GMAKE_J} EXEC_SE=${EXEROOT}/cesm.exe MODEL=driver -f ${CASETOOLS}/Makefile ";
+my $sysmod = "gmake exec_se -j ${GMAKE_J} EXEC_SE=${EXEROOT}/cesm.exe MODEL=driver  -f ${CASETOOLS}/Makefile ";
 system($sysmod) == 0 or die "ERROR: $sysmod failed: $?\n";
 
 exit(0);

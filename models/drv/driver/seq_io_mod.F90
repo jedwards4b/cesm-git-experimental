@@ -1,5 +1,5 @@
 !===============================================================================
-! SVN $Id: seq_io_mod.F90 65841 2014-11-30 14:44:29Z jedwards $
+! SVN $Id: seq_io_mod.F90 67467 2015-01-26 01:04:19Z mvertens $
 ! SVN $URL: https://svn-ccsm-models.cgd.ucar.edu/drv/seq_mct/branches/newtesting/driver/seq_io_mod.F90 $
 !===============================================================================
 !BOP ===========================================================================
@@ -395,6 +395,7 @@ end function seq_io_sec2hms
     integer(in),pointer :: dimid(:)
     type(var_desc_t) :: varid
     type(io_desc_t) :: iodesc
+    integer(kind=Pio_Offset_Kind) :: frame=-1
     type(mct_string) :: mstring     ! mct char type
     character(CL)    :: itemc       ! string converted to char
     character(CL)    :: name1       ! var name
@@ -410,7 +411,7 @@ end function seq_io_sec2hms
     character(*),parameter :: subName = '(seq_io_write_av) '
     integer :: lbnum
     integer, pointer :: Dof(:)
-    integer(PIO_Offset_kind) :: frame
+
     !-------------------------------------------------------------------------------
     !
     !-------------------------------------------------------------------------------
@@ -450,6 +451,9 @@ end function seq_io_sec2hms
        call shr_sys_abort()
     endif
 
+    if (present(nt)) then
+       frame = nt
+    endif
     if (present(nx)) then
        if (nx /= 0) lnx = nx
     endif
@@ -509,10 +513,7 @@ end function seq_io_sec2hms
           call mct_string_clean(mstring)
           name1 = trim(lpre)//'_'//trim(itemc)
           rcode = pio_inq_varid(cpl_io_file,trim(name1),varid)
-          if (present(nt)) then
-             frame = nt
-             call pio_setframe(cpl_io_file, varid,frame)
-          endif
+          call pio_setframe(cpl_io_file,varid,frame)
           call pio_write_darray(cpl_io_file, varid, iodesc, av%rattr(k,:), rcode, fillval=lfillvalue)
        enddo
 
@@ -566,7 +567,7 @@ end function seq_io_sec2hms
     integer(in),pointer :: dimid(:)
     type(var_desc_t) :: varid
     type(io_desc_t) :: iodesc
-    integer(kind=pio_offset_kind) :: frame
+    integer(kind=Pio_Offset_Kind) :: frame=-1
     type(mct_string) :: mstring     ! mct char type
     character(CL)    :: itemc       ! string converted to char
     character(CL)    :: name1       ! var name
@@ -625,6 +626,9 @@ end function seq_io_sec2hms
     if (nf < 1) then
        write(logunit,*) subname,' ERROR: nf = ',nf,trim(dname)
        call shr_sys_abort()
+    endif
+    if (present(nt)) then
+       frame = nt
     endif
 
     if (present(nx)) then
@@ -714,10 +718,7 @@ end function seq_io_sec2hms
           call mct_string_clean(mstring)
           name1 = trim(lpre)//'_'//trim(itemc)
           rcode = pio_inq_varid(cpl_io_file,trim(name1),varid)
-          if (present(nt)) then
-             frame = nt
-             call pio_setframe(cpl_io_file,varid,frame)
-          endif
+          call pio_setframe(cpl_io_file,varid,frame)
           n = 0
           do k1 = 1,ni
           do k2 = 1,ns
@@ -725,6 +726,7 @@ end function seq_io_sec2hms
              data(n) = AVS(k1)%rAttr(k,k2)
           enddo
           enddo
+!          call pio_write_darray(cpl_io_file, varid, iodesc, av%rattr(k,:), rcode, fillval=lfillvalue)
           call pio_write_darray(cpl_io_file, varid, iodesc, data, rcode, fillval=lfillvalue)
        enddo
 
@@ -782,7 +784,7 @@ end function seq_io_sec2hms
     integer(in),pointer      :: dimid(:)
     type(var_desc_t)         :: varid
     type(io_desc_t)          :: iodesc
-    integer(kind=pio_offset_kind) :: frame
+    integer(kind=Pio_Offset_Kind) :: frame=-1
     type(mct_string)         :: mstring     ! mct char type
     character(CL)            :: itemc       ! string converted to char
     character(CL)            :: name1       ! var name
@@ -819,6 +821,9 @@ end function seq_io_sec2hms
     lwdata = .true.
     if (present(whead)) lwhead = whead
     if (present(wdata)) lwdata = wdata
+    if (present(nt)) then
+       frame = nt
+    endif
 
     if (.not.lwhead .and. .not.lwdata) then
        ! should we write a warning?
@@ -935,10 +940,7 @@ end function seq_io_sec2hms
           call mct_string_clean(mstring)
           name1 = trim(lpre)//'_'//trim(itemc)
           rcode = pio_inq_varid(cpl_io_file,trim(name1),varid)
-          if (present(nt)) then
-             frame = nt
-             call pio_setframe(cpl_io_file,varid,frame)
-          endif
+          call pio_setframe(cpl_io_file,varid,frame)
           n = 0
           do k1 = 1,ni
              if (trim(flow) == 'x2c') avcomp => component_get_x2c_cx(comp(k1))  

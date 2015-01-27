@@ -55,6 +55,7 @@ set CASE                 = `./xmlquery CASE -value`
 ./xmlchange -file env_run.xml -id CLM_BLDNML_OPTS -val "-bgc_spinup on" -append || exit -1
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 # must look in short term archiving directory for cpl log files
 set CplLogFile = `ls -1t $DOUT_S_ROOT_LOCKED/cpl/logs/cpl.log* | head -1`
@@ -108,6 +109,7 @@ ln -s ${DOUTSR0}/rest/${refdate}-00000/*${refdate}*  $RUNDIR/.
 set CASE = `./xmlquery CASE -value`
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 # since short term archiving is off, must now look in $RUNDIR for cpl log files
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`

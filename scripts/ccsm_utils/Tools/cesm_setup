@@ -78,18 +78,8 @@ if ($opts{'testmode'}) {
     $testmode = 1;
 }
 
-#-----------------------------------------------------------------------------------------------
-# The XML::Lite module is required to parse the XML configuration files.
-#-----------------------------------------------------------------------------------------------
-
-(-f "$caseroot/Tools/XML/Lite.pm")  or  die <<"EOF";
-** Cannot find perl module \"XML/Lite.pm\" in directory 
-    \"$caseroot/ccsm_utils/Tools/perl5lib\" **
-EOF
-	
 my $dirs = "$caseroot/Tools";
 unshift @INC, $dirs;
-require XML::Lite;
 require SetupTools;
 
 my %xmlvars=();
@@ -121,8 +111,6 @@ if ($fail_setup) {
     print "$strrun" if(defined($strrun));
     die "Correct above and issue cesm_setup again \n";
 }
-
-
 
 #-----------------------------------------------------------------------------------------------
 # Create batch script 

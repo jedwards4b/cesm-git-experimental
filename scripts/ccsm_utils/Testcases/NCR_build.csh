@@ -21,6 +21,7 @@ cp -f env_mach_pes.xml LockedFiles/env_mach_pes.xml.locked
 cp -f env_mach_pes.xml env_mach_pes.xml.1
 cp -f env_build.xml    env_build.xml.1
  
+#------------------------------------------------------------
 # Set up sequential component layout for single instance for each component
 
 ./xmlchange -file env_mach_pes.xml -id NINST_ATM  -val 1
@@ -84,7 +85,13 @@ endif
 ./cesm_setup
 
 ./$CASE.clean_build 
+
 ./$CASE.build
+if ($status != 0) then
+   echo "Error: build for single instance failed" >! ./TestStatus
+   echo "CFAIL $CASE" > ./TestStatus
+   exit -1    
+endif 
 
 mv -f $EXEROOT/cesm.exe $EXEROOT/cesm.exe.1  || exit -9
 cp -f env_mach_pes.xml   env_mach_pes.xml.1
@@ -149,7 +156,13 @@ set NTASKS_CPL  = `./xmlquery NTASKS_CPL	-value`
 ./cesm_setup
 
 ./$CASE.cleanbuild
+
 ./$CASE.build
+if ($status != 0) then
+   echo "Error: build for single instance failed" >! ./TestStatus
+   echo "CFAIL $CASE" > ./TestStatus
+   exit -1    
+endif 
 
 mv -f $EXEROOT/cesm.exe $EXEROOT/cesm.exe.2  || exit -9
 cp -f env_mach_pes.xml   env_mach_pes.xml.2

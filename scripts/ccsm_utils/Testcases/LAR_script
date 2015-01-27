@@ -22,6 +22,7 @@ set start_date = $start_year-11-01
 ./xmlchange -file env_run.xml   -id REST_OPTION		-val none
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
@@ -52,6 +53,7 @@ echo "doing a continue run" >>& $TESTSTATUS_LOG
 ./xmlchange -file env_run.xml -id CONTINUE_RUN -val TRUE
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then

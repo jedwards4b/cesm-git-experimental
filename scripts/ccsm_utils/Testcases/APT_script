@@ -80,6 +80,7 @@ set CASE = `./xmlquery CASE  -value`
 ./xmlchange -file env_build.xml -id BUILD_COMPLETE -val TRUE
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
