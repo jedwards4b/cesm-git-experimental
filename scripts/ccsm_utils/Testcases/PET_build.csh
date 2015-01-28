@@ -65,3 +65,8 @@ cp -f env_mach_pes.xml env_mach_pes.xml.1
 ./cesm_setup 
 
 ./$CASE.build
+if ($status != 0) then
+   echo "Error: build failed" >! ./TestStatus
+   echo "CFAIL $CASE" > ./TestStatus
+   exit -1    
+endif 

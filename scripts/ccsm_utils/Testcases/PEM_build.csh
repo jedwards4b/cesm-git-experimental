@@ -16,6 +16,11 @@ endif
 ./cesm_setup
 
 ./$CASE.build
+if ($status != 0) then
+   echo "Error: build default PE layout failed" >! ./TestStatus
+   echo "CFAIL $CASE" > ./TestStatus
+   exit -1    
+endif 
 
 mv -f $EXEROOT/cesm.exe $EXEROOT/cesm.exe.1
 cp -f env_build.xml      env_build.xml.1
@@ -67,6 +72,11 @@ endif
 ./cesm_setup
 
 ./$CASE.build
+if ($status != 0) then
+   echo "Error: build for half tasks layout failed" >! ./TestStatus
+   echo "CFAIL $CASE" > ./TestStatus
+   exit -1    
+endif 
 
 mv -f $EXEROOT/cesm.exe $EXEROOT/cesm.exe.2
 cp -f env_build.xml      env_build.xml.2

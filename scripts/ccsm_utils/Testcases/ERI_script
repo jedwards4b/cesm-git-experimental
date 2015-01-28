@@ -102,6 +102,7 @@ if (-e user_nl_cam) then
 endif
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 # must look in short term archiving directory for cpl log files
 set CplLogFile = `ls -1t $DOUT_S_ROOT/cpl/logs/cpl.log* | head -1`
@@ -164,6 +165,7 @@ cp    ${DOUTSR1}/rest/${refdate2}-${reftod2}/*rpointer*    $RUNDIR/.
 # run ref2 case (all component history files will go to short term archiving)
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 # must look in short term archiving directory for cpl log files
 set CplLogFile = `ls -1t $DOUT_S_ROOT/cpl/logs/cpl.log* | head -1`
@@ -238,6 +240,7 @@ $CASETOOLS/component_compare_move.sh -rundir $RUNDIR -testcase $CASE -suffix "hy
 
 # run branch case (short term archiving is off)
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
@@ -285,6 +288,7 @@ echo "branch restart: doing a ${stopn4} ${STOP_OPTION} continue restart test" >>
 # do the restart run (short term archiving is off)
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then

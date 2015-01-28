@@ -30,6 +30,7 @@ cd $CASEROOT
 echo "doing an ${STOP_N} ${STOP_OPTION} initial test, no restarts written" >>& $TESTSTATUS_LOG 
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then

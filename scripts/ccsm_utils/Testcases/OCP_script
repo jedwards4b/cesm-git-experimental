@@ -33,6 +33,7 @@ touch pop_perf.out
       cp -f $EXEROOT/cesm.exe.${acnt} $EXEROOT/cesm.exe
 
       ./$CASE.run
+      if ($status != 0) exit -1
 
       set OCN_GRID	 = `./xmlquery OCN_GRID	      -value`
       set POP_BLCKX	 = `./xmlquery POP_BLCKX      -value`

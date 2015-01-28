@@ -50,6 +50,7 @@ cp -f user_nl_cice_0001.mod  user_nl_cice_0001
 cp -f user_nl_cice_0002.base user_nl_cice_0002
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
@@ -85,6 +86,7 @@ cp -f user_nl_cice_0001.base user_nl_cice_0001
 cp -f user_nl_cice_0002.mod  user_nl_cice_0002
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then

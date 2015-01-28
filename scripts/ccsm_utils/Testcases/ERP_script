@@ -66,6 +66,7 @@ echo "initial: doing a ${stopn1} ${STOP_OPTION} initial test writing a restart a
 ./xmlchange -file env_run.xml -id HIST_N       -val ${histn}
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
@@ -117,6 +118,7 @@ cp -f env_build.xml.2    LockedFiles/env_build.xml.locked
 ./cesm_setup
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then

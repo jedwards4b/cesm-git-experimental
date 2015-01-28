@@ -44,6 +44,7 @@ echo " doing a ${STOP_N} ${STOP_OPTION} multi threaded test" >>& $TESTSTATUS_LOG
 echo "   no restarts are written" >>& $TESTSTATUS_LOG 
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
@@ -93,6 +94,7 @@ echo "   no restarts are written" >>& $TESTSTATUS_LOG
 cp -f env_mach_pes.xml LockedFiles/env_mach_pes.xml.locked
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then

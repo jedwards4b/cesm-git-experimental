@@ -66,6 +66,7 @@ $usgstatement = <<EOF;
 SYNOPSIS
 
     manage_xml_entries -list [compsets|grids|tests|machines|compilers|components]
+                       -component [cesm | cam | clm | data | drv | pop | cice | cism] 
 
     manage_xml_entries -query [-compset|-grid|-test|-machine|-compiler|-testmods]
                        -component [cesm | cam | clm | data | drv | pop | cice | cism] 
@@ -85,7 +86,8 @@ SYNOPSIS
 
 DESCRIPTION
 
-    Adds, removes, and 'syncs' modified testlists with the main xml test file.  
+    Adds, removes, and 'syncs' modified testlists with the xml test files for a given
+    component.  
 
 TEST FILE FORMAT: 
 
@@ -124,11 +126,13 @@ USAGE, OPTIONS, AND EXAMPLES
  
     Example:  
     To modify the yellowstone PGI prebeta test list for example, one would do the following: 
-	manage_xml_entries -query -outputlist -machine yellowstone -compiler pgi -category prebeta > yellowstone.txt
+	manage_xml_entries -query -outputlist -machine yellowstone -compiler pgi \
+             -category prebeta -component cesm > yellowstone.txt
  
     Make any modifications necessary to yellowstone.txt
 
-    manage_xml_entries -synclist -machine yellowstone -compiler pgi -category prebeta -file yellowstone.txt
+    manage_xml_entries -synclist -machine yellowstone -compiler pgi \
+             -category prebeta -component cesm -file yellowstone.txt
 
     This command will delete all tests that match yellowstone, the pgi compiler, and the prebeta category. 
     Then all the potentially modified tests in yellowstone.txt will be added back in.   
@@ -137,16 +141,17 @@ USAGE, OPTIONS, AND EXAMPLES
  
     This mode is intended delete any tests found matching the specified arguments.
     Want to delete all the aux_clm tests?  
-    manage_xml_entries -removetests -category aux_clm
+    manage_xml_entries -removetests -category aux_clm -component cesm
    
     Want to delete all the BG1850CN tests?  
-    manage_xml_entries -removetests -compset BG1850CN
+    manage_xml_entries -removetests -compset BG1850CN -component cesm
 	
     want to delte the yellowstone aux_science tests using only the gnu compiler? 
-    manage_xml_entries -removetests -category aux_science -machine yellowstone -compiler gnu
+    manage_xml_entries -removetests -category aux_science -machine yellowstone \
+        -compiler gnu -component cesm
 
     Want to remove only tests with the 'clm/decStart' testmod? 
-    manage_xml_entries -removetests -testmods "clm/decStart"
+    manage_xml_entries -removetests -testmods "clm/decStart" -component cesm
 
     -cleanxml:
 
@@ -214,7 +219,7 @@ sub getOptions
 	    "testmods=s"	=> \$opts{'testmods'},
 	);
 	usage() if $opts{'help'};
-	if ( ! defined $opts{'component'} && ! $opts{'list'} ) 
+	if ( ! defined $opts{'component'} )
 	{
 	    print "Must supply a component argument via the -component option \n";
 	    print " values must be [cam | clm | cice | data | drv | cism | pop | cesm ] \n";
@@ -226,7 +231,7 @@ sub getOptions
 		print " testlist is $testlist \n";
 	    } 
 	    if ($component eq 'cesm') {
-		$testlist = "$scriptdir/ccsm_utils/Testlistxml/testlist_cesm.xml"; 
+		$testlist = "$scriptdir/ccsm_utils/Testlistxml/testlist_allactive.xml"; 
 		print " testlist is $testlist \n";
 	    }
 	    if ($component eq 'clm') {
@@ -354,7 +359,8 @@ sub writeXML
 	print "Please carefully review and/or diff the new file against the\n";
 	print "original, and if you are satisfied with the changes, move \n";
 	print "$newfilename to \n";
-	print "$testlist\n\n";
+	print "$testlist\n";
+	print "as in with the unix command: \nmv $newfilename $testlist\n\n";
 
 	open my $NEWTESTXML, ">", "$newfilename" or die $?;
 	my $tststring = $testxml->toString(1);
@@ -457,7 +463,7 @@ sub parseTextList
 		}
 		if($parse_error)
 		{
-			print "Formatting error found in the following line:\n";
+			print "Formatting error found in the following line of text in your input file:\n";
 			print "$line\n";
 			print "Please review your test list and correct any errors\n";
 			return undef;

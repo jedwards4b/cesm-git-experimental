@@ -219,11 +219,6 @@ EOF
            my $newfile = &Streams::TemplateGeneric::expandXMLVar( $fileneed, \%xmlvars );
            $fileneed = $newfile;
         }
-#        print "tcx fn4 is $fileneed\n";
-#        print "tcx filend is $filend\n";
-#        print "tcx docheck is $docheck\n";
-#        print "tcx inputdata_rootdir is $inputdata_rootdir\n";
-#        print "tcx DIN_LOC_ROOT is $dinlocroot\n";
 
         if ($docheck) {
            if (($checkopt)  && ($fileneed =~ m/.*(\w)+.*/)) {

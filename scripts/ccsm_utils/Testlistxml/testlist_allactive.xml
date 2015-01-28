@@ -103,8 +103,6 @@
         <machine compiler="intel" testtype="prealpha" testmods="allactive/default">eos</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default">eos</machine>
       </test>
-      <test name="SMS_D">
-      </test>
       <test name="SMS_DE">
         <machine compiler="intel" testtype="aux_esmf" testmods="allactive/default">yellowstone</machine>
       </test>
@@ -163,9 +161,6 @@
       </test>
     </grid>
     <grid name="ne120_g16">
-      <test name="ERS_Ld9">
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move back to clm4.0, until CLM4.5ne120 avail">yellowstone</machine>
-      </test>
       <test name="PFS">
         <machine compiler="intel" testtype="csltiming">yellowstone</machine>
       </test>
@@ -173,13 +168,9 @@
     <grid name="ne30_g16">
       <test name="ERS">
         <machine compiler="intel" testtype="aux_waccm" testmods="allactive/default">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
       </test>
       <test name="PFS">
-        <machine compiler="intel" testtype="prebeta">eos</machine>
         <machine compiler="intel" testtype="csltiming">yellowstone</machine>
-        <machine compiler="gnu" testtype="prebeta">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta">yellowstone</machine>
       </test>
     </grid>
   </compset>
@@ -187,32 +178,55 @@
     <grid name="T31_g37">
       <test name="CME">
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">janus</machine>
+        <machine compiler="gnu" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
       </test>
       <test name="ERI_PT">
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">goldbach</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">goldbach</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">janus</machine>
+        <machine compiler="gnu" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
       </test>
       <test name="ERS_D_E">
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">goldbach</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">goldbach</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">janus</machine>
+        <machine compiler="gnu" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
+      </test>
+      <test name="ERS_Ld9">
+        <machine compiler="nag" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">goldbach</machine>
       </test>
       <test name="ERS_PT">
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">goldbach</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">goldbach</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="start moving B compset tests to use CLM4.5/BGC">janus</machine>
         <machine compiler="gnu" testtype="prealpha" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
         <machine compiler="intel" testtype="prealpha" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
+        <machine compiler="gnu" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
       </test>
       <test name="NCR_P4x1D">
         <machine compiler="gnu" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
       </test>
     </grid>
     <grid name="f09_g16">
       <test name="ERI_PT">
         <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">bluewaters</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">edison</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">eos</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">hopper</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">titan</machine>
+      </test>
+      <test name="ERS_PT">
+        <machine compiler="ibm" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">mira</machine>
       </test>
     </grid>
     <grid name="f19_g16">
@@ -222,13 +236,23 @@
       </test>
       <test name="PET_PT">
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">edison</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">goldbach</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">goldbach</machine>
         <machine compiler="pgi" testtype="prealpha" testmods="allactive/default" comment="move to clm4.5">hopper</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">hopper</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">janus</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">titan</machine>
         <machine compiler="gnu" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
       </test>
       <test name="SMS">
         <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">goldbach</machine>
+      </test>
+    </grid>
+    <grid name="ne120_g16">
+      <test name="ERS_Ld9">
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
       </test>
     </grid>
     <grid name="ne30_g16">
@@ -239,60 +263,51 @@
         <machine compiler="ibm" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">mira</machine>
       </test>
       <test name="ERS">
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">bluewaters</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">edison</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">eos</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">hopper</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">titan</machine>
         <machine compiler="gnu" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="start moving B compset tests to use CLM4.5/BGC">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
       </test>
       <test name="ERS_IOP">
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
       </test>
       <test name="ERS_L3m">
         <machine compiler="intel" testtype="prebeta" comment="move to clm4.5">yellowstone</machine>
       </test>
       <test name="ERS_Ld9">
+        <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">goldbach</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">goldbach</machine>
         <machine compiler="intel" testtype="prealpha" testmods="allactive/default" comment="move to clm4.5">janus</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">janus</machine>
         <machine compiler="gnu" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">yellowstone</machine>
       </test>
       <test name="PFS">
         <machine compiler="pgi" testtype="prebeta" comment="move to clm4.5">bluewaters</machine>
+        <machine compiler="intel" testtype="prebeta" comment="change to clm4.5">eos</machine>
         <machine compiler="ibm" testtype="prebeta" comment="start moving B compset tests to use CLM4.5/BGC">mira</machine>
         <machine compiler="pgi" testtype="prebeta" comment="move to clm4.5">titan</machine>
+        <machine compiler="gnu" testtype="prebeta" comment="change to clm4.5">yellowstone</machine>
         <machine compiler="intel" testtype="prebeta" comment="move to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" comment="change to clm4.5">yellowstone</machine>
+      </test>
+      <test name="SMS_D">
+        <machine compiler="ibm" testtype="prebeta" testmods="allactive/default" comment="change to clm4.5">mira</machine>
       </test>
     </grid>
   </compset>
   <compset name="B1850CN">
     <grid name="T31_g37">
-      <test name="CME">
-        <machine compiler="gnu" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-      </test>
-      <test name="ERI_PT">
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">goldbach</machine>
-        <machine compiler="gnu" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-      </test>
-      <test name="ERS_D_E">
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">goldbach</machine>
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default">janus</machine>
-        <machine compiler="gnu" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-      </test>
       <test name="ERS_Ld9">
         <machine compiler="pgi" testtype="prealpha" testmods="allactive/default">goldbach</machine>
-        <machine compiler="nag" testtype="prebeta" testmods="allactive/default">goldbach</machine>
       </test>
       <test name="ERS_PT">
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">goldbach</machine>
         <machine compiler="pgi" testtype="prealpha" testmods="allactive/default">yellowstone</machine>
-        <machine compiler="gnu" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-      </test>
-      <test name="NCR_P4x1D">
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
       </test>
       <test name="NOC">
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="Tony added the test script as of scripts4_131106">yellowstone</machine>
@@ -302,16 +317,8 @@
       <test name="CME">
         <machine compiler="intel" testtype="aux_esmf" testmods="allactive/default">yellowstone</machine>
       </test>
-      <test name="ERI_PT">
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default">eos</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">hopper</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">titan</machine>
-      </test>
       <test name="ERS">
         <machine compiler="intel" testtype="aux_science" testmods="allactive/default">yellowstone</machine>
-      </test>
-      <test name="ERS_PT">
-        <machine compiler="ibm" testtype="prebeta" testmods="allactive/default">mira</machine>
       </test>
       <test name="PFS">
         <machine compiler="intel" testtype="csltiming" testmods="allactive/default">yellowstone</machine>
@@ -327,42 +334,19 @@
       <test name="ERS_L3m">
         <machine compiler="intel" testtype="aux_pop">yellowstone</machine>
       </test>
-      <test name="ERS_N2">
-      </test>
-      <test name="PET_PT">
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default">goldbach</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">goldbach</machine>
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default">janus</machine>
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
-      </test>
-    </grid>
-    <grid name="f45_g37">
-      <test name="ERS_Ld9">
-      </test>
     </grid>
     <grid name="ne30_g16">
       <test name="ERS">
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">bluewaters</machine>
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default">eos</machine>
         <machine compiler="pgi" testtype="prealpha" testmods="allactive/default">titan</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">titan</machine>
-      </test>
-      <test name="ERS_IOP">
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
       </test>
       <test name="ERS_Ld9">
-        <machine compiler="intel" testtype="prebeta" testmods="allactive/default">goldbach</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">goldbach</machine>
         <machine compiler="intel" testtype="aux_waccm" testmods="allactive/default">yellowstone</machine>
         <machine compiler="gnu" testtype="prealpha" testmods="allactive/default">yellowstone</machine>
         <machine compiler="intel" testtype="prealpha" testmods="allactive/default">yellowstone</machine>
         <machine compiler="pgi" testtype="prealpha" testmods="allactive/default">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
       </test>
       <test name="SMS_D">
         <machine compiler="ibm" testtype="prealpha" testmods="allactive/default">mira</machine>
-        <machine compiler="ibm" testtype="prebeta" testmods="allactive/default">mira</machine>
       </test>
     </grid>
   </compset>
@@ -496,8 +480,6 @@
   </compset>
   <compset name="BCN">
     <grid name="T31_g37">
-      <test name="ERS_L3m">
-      </test>
       <test name="SMS_DE">
         <machine compiler="intel" testtype="aux_esmf" testmods="allactive/default">yellowstone</machine>
       </test>
@@ -507,8 +489,27 @@
         <machine compiler="intel" testtype="aux_esmf" testmods="allactive/default">yellowstone</machine>
       </test>
     </grid>
-    <grid name="ne120_g16">
-      <test name="SMS_Ld6">
+  </compset>
+  <compset name="BG1850C5L45BGC">
+    <grid name="T31_g37">
+      <test name="NCK_D">
+        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">goldbach</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">goldbach</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">janus</machine>
+        <machine compiler="gnu" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">yellowstone</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">yellowstone</machine>
+      </test>
+    </grid>
+    <grid name="f09_g16">
+      <test name="NCK">
+        <machine compiler="ibm" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">mira</machine>
+      </test>
+    </grid>
+    <grid name="f19_g16">
+      <test name="NCK">
+        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">goldbach</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">goldbach</machine>
       </test>
     </grid>
   </compset>
@@ -522,43 +523,20 @@
   </compset>
   <compset name="BG1850CN">
     <grid name="T31_g37">
-      <test name="NCK">
-      </test>
-      <test name="NCK_D">
-        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling">goldbach</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling">goldbach</machine>
-        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling">janus</machine>
-        <machine compiler="gnu" testtype="prebeta" testmods="cism/test_coupling">yellowstone</machine>
-        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling">yellowstone</machine>
-      </test>
       <test name="NCK_E">
         <machine compiler="intel" testtype="aux_esmf" testmods="allactive/default">yellowstone</machine>
       </test>
-      <test name="SMS_D">
-      </test>
-    </grid>
-    <grid name="f09_g16">
-      <test name="NCK">
-        <machine compiler="ibm" testtype="prebeta" testmods="cism/test_coupling">mira</machine>
-      </test>
-    </grid>
-    <grid name="f19_g16">
-      <test name="NCK">
-        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling">goldbach</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling">goldbach</machine>
-      </test>
     </grid>
   </compset>
-  <compset name="BGCN">
+  <compset name="BGC5L45BGC">
     <grid name="T31_g37">
       <test name="SMS_D">
-        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling">goldbach</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling">goldbach</machine>
-        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling">janus</machine>
-        <machine compiler="gnu" testtype="prebeta" testmods="cism/test_coupling">yellowstone</machine>
-        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling">yellowstone</machine>
-        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling">yellowstone</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">goldbach</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">goldbach</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">janus</machine>
+        <machine compiler="gnu" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">yellowstone</machine>
+        <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">yellowstone</machine>
+        <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling" comment="change to clm4.5">yellowstone</machine>
       </test>
     </grid>
   </compset>
@@ -577,10 +555,6 @@
         <machine compiler="ibm" testtype="prebeta" testmods="cism/test_coupling">mira</machine>
       </test>
     </grid>
-    <grid name="f19_g16">
-      <test name="ERS_Ld9">
-      </test>
-    </grid>
   </compset>
   <compset name="BGRCP45CN">
     <grid name="f09_g16">
@@ -593,18 +567,12 @@
     </grid>
     <grid name="f19_g16">
       <test name="ERS_Ld9">
-        <machine compiler="pgi" testtype="prealpha"testmods="cism/test_coupling">bluewaters</machine>
+        <machine compiler="pgi" testtype="prealpha" testmods="cism/test_coupling">bluewaters</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling">bluewaters</machine>
         <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling">edison</machine>
         <machine compiler="intel" testtype="prebeta" testmods="cism/test_coupling">eos</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling">hopper</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="cism/test_coupling">titan</machine>
-      </test>
-    </grid>
-  </compset>
-  <compset name="BGRCP60CN">
-    <grid name="f19_g16">
-      <test name="ERS">
       </test>
     </grid>
   </compset>
@@ -626,8 +594,6 @@
         <machine compiler="intel" testtype="prealpha" testmods="allactive/default">janus</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default">janus</machine>
       </test>
-      <test name="ERS_PT_E">
-      </test>
     </grid>
   </compset>
   <compset name="BHISTBDRD">
@@ -648,15 +614,13 @@
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default">edison</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">hopper</machine>
       </test>
-      <test name="ERS_Ld11">
-        <machine compiler="intel" testtype="aux_science" testmods="allactive/default">yellowstone</machine>
-      </test>
       <test name="ERS_IOP_Ld11">
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default">janus</machine>
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="allactive/default">yellowstone</machine>
       </test>
       <test name="ERS_Ld11">
+        <machine compiler="intel" testtype="aux_science" testmods="allactive/default">yellowstone</machine>
       </test>
     </grid>
   </compset>
@@ -816,12 +780,6 @@
       </test>
     </grid>
   </compset>
-  <compset name="BRCP45CN">
-    <grid name="f09_g16">
-      <test name="ERS_Ld9">
-      </test>
-    </grid>
-  </compset>
   <compset name="BRCP45WCN">
     <grid name="f19_g16">
       <test name="ERI">
@@ -881,18 +839,6 @@
       <test name="ERS_PT">
         <machine compiler="intel" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">edison</machine>
         <machine compiler="pgi" testtype="prebeta" testmods="allactive/default" comment="move to clm4.5">hopper</machine>
-      </test>
-    </grid>
-  </compset>
-  <compset name="BRCP85CN">
-    <grid name="f09_g16">
-      <test name="ERS_PT">
-      </test>
-    </grid>
-  </compset>
-  <compset name="BRCP85WCN">
-    <grid name="f19_g16">
-      <test name="ERI_PT">
       </test>
     </grid>
   </compset>

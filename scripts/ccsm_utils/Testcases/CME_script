@@ -27,6 +27,7 @@ cd $CASEROOT
 echo "doing a ${STOP_N} ${STOP_OPTION} mct test" >>& $TESTSTATUS_LOG 
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
@@ -60,6 +61,7 @@ cp -f env_build.xml.esmf  env_build.xml
 cp -f env_build.xml.esmf  LockedFiles/env_build.xml.locked
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 $CASETOOLS/component_compare_move.sh -rundir $RUNDIR -testcase $CASE -suffix "esmf"
 

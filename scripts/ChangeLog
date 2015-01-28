@@ -1,8 +1,24 @@
 ================================================================================
-SVN $Id: ChangeLog 67302 2015-01-20 18:18:53Z mvertens $
+SVN $Id: ChangeLog 67442 2015-01-24 02:11:22Z erik $
 SVN $URL: https://svn-ccsm-models.cgd.ucar.edu/scripts/branches/test_comphist2/ChangeLog $
 ================================================================================
 This file describes what tags were created and why
+================================================================================
+
+================================================================================
+Originator: erik
+Date: 22 Jan 2015
+Model: scripts
+Version: scripts4_150122
+One-line:  Add more CAM5-CLM4.5 BGC compsets for B and F and convert more prealpha/prebeta
+           tests to use CAM5-CLM4.5 compsets
+
+M       ccsm_utils/Case.template/config_compsets.xml - Add some new CAM5-CLM45 B and F coupled compsets:
+                 BG1850C5L45BGC, FGC5L45BGC, FG1850C5L45BGC, change FGHISTCN to FGHISTC5L45BGC
+M       ccsm_utils/Testlistxml/manage_xml_entries ---- Add comment that gives mv command
+M       ccsm_utils/Testlistxml/testlist.xml ---------- Update prebeta and prealpha test lists
+              to use more CAM5-CLM4.5-BGC compsets
+
 ================================================================================
 Originator: jedwards
 Date: 20 Jan 2015

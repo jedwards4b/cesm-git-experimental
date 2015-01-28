@@ -231,7 +231,11 @@ foreach my $file ( @filenames ) {
 # Report the results
 foreach my $id ( @ids ) {
    unless (defined($myfile{$id}) ) { 
-       die "WARNING: id $id not found in any of the files: @filenames \n"; 
+       if ($opts{'silent'}) {
+	   exit(1);
+       } else {
+	   die "WARNING: id $id not found in any of the files: @filenames \n"; 
+       }
    }
 
    if ( ! $opts{'value'} ) {

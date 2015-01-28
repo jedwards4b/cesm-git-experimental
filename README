@@ -8,7 +8,7 @@
 
 For commits to the CESM svn repo
 
-1) check out the latest ccsm4 tag but do not populate external directories
+1) check out the latest cesm tag but do not populate external directories
 > svn co --ignore-externals $SVNREPO/cesm1/tags/cesm1_3_alpha## my_sandbox
 > svn co -N $SVNREPO/cesm1/tags/cesm1_3_alpha## my_sandbox
 
@@ -32,4 +32,4 @@ component tags
 > mv ChangeLog.new  ChangeLog
 
 7) copy your sandbox to a new tag in the repository
-> svn copy . $SVNREPO/ccsm4/tags/cesm1_3_alpha## -m "created tag cesm1_3_alpha##"
+> svn copy . $SVNREPO/cesm1/tags/cesm1_3_alpha## -m "created tag cesm1_3_alpha##"

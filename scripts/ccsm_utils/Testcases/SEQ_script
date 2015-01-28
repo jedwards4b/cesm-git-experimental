@@ -37,6 +37,7 @@ cd $CASEROOT
 echo "doing a ${STOP_N} ${STOP_OPTION} initial test with default layout" >>& $TESTSTATUS_LOG 
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
@@ -78,6 +79,7 @@ echo "doing a second a ${STOP_N} ${STOP_OPTION} with all rootpes set to 0" >>& $
 cp -f env_mach_pes.xml LockedFiles/env_mach_pes.xml.locked
 
 ./$CASE.run
+if ($status != 0) exit -1
 
 set CplLogFile = `ls -1t $RUNDIR/cpl.log* | head -1`
 if ( $?CplLogFile ) then
