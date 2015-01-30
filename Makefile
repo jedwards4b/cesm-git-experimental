@@ -10,7 +10,12 @@ ROF_SVN = https://svn-ccsm-models.cgd.ucar.edu/rivrtm/branches/newtesting
 PIO_SVN = https://parallelio.googlecode.com/svn/trunk_tags/pio1_9_10/pio
 WAV_SVN = https://svn-ccsm-models.cgd.ucar.edu/ww3/branches/newtesting
 
-GIT_SVN_CLONE = git svn clone --no-follow-parent --no-minimize-url
+# arbitrary starting point to speed up clones
+SVN_HIST=65000
+GIT_SVN_CLONE = git svn clone --no-follow-parent --no-minimize-url -r$(SVN_HIST):HEAD
+# NOTE(bja, 2015-01) can probably do smarter things with the clone
+# command using --trunk, --tags, --branches to pull in CESM specific
+# layout.
 
 CI_GIT = https://github.com/CESM-Development/CoupledInfrastructure.git
 MCT_GIT = https://github.com/MCSclimate/MCT.git
