@@ -38,7 +38,7 @@ lnd-svn : FORCE
 ocn-svn : FORCE
 	$(GIT_SVN_CLONE) $(OCN_SVN) cesm/models/ocn/pop2
 
-rtm-svn : FORCE
+rof-svn : FORCE
 	$(GIT_SVN_CLONE) $(RTM_SVN) cesm/models/rof/rtm
 
 pio-svn : FORCE
