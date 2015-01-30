@@ -51,3 +51,6 @@ coupled-infrastructure-git :
 
 mct-git :
 	git subtree add --prefix cesm/models/utils/mct $(MCT_GIT) NagFix_MCT_2.8.3
+
+# null rule to force things to happen
+FORCE :
