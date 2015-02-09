@@ -1,0 +1,12 @@
+cesm                                    https://github.com/CESM-Development/CoupledInfrastructure/trunk 
+cesm/models/atm/cam                     https://svn-ccsm-models.cgd.ucar.edu/cam1/branches/newtesting/models/atm/cam
+cesm/models/glc/cism                    https://svn-ccsm-models.cgd.ucar.edu/glc/branches/newtesting
+cesm/models/ice/cice                    https://svn-ccsm-models.cgd.ucar.edu/cice/branches/newtesting
+cesm/models/lnd/clm                     https://svn-ccsm-models.cgd.ucar.edu/clm2/branches/newtesting/models/lnd/clm
+cesm/models/ocn/pop2                    https://svn-ccsm-models.cgd.ucar.edu/pop2/branches/newtesting
+cesm/models/rof/rtm                     https://svn-ccsm-models.cgd.ucar.edu/rivrtm/branches/newtesting
+cesm/models/utils/mct                   https://github.com/MCSclimate/MCT/tags/NagFix_MCT_2.8.3
+cesm/models/utils/pio                   https://parallelio.googlecode.com/svn/trunk_tags/pio1_9_10/pio
+cesm/models/wav/ww3                   https://svn-ccsm-models.cgd.ucar.edu/ww3/branches/newtesting
+cesm/scripts/ccsm_utils/CMake        https://github.com/CESM-Development/CMake_Fortran_utils/tags/CMake_Fortran_utils_141210b
+cesm/models/utils/timing/gptl         https://github.com/jmrosinski/GPTL/tags/v5.4.3 
